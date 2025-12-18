@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Genre MIDI Composer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎵 Universal Genre MIDI Composer</h1>
+                <p>Genera música MIDI en 200+ géneros musicales</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Left Panel: Genre Selection -->
+            <section class="panel left-panel">
+                <h2>Selecciona un Género</h2>
+                
+                <!-- Search -->
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar género...">
+                    <button id="searchBtn">🔍</button>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">Todos</button>
+                    <button class="tab-btn" data-category="Rock">Rock</button>
+                    <button class="tab-btn" data-category="Metal">Metal</button>
+                    <button class="tab-btn" data-category="Electronic">Electrónica</button>
+                    <button class="tab-btn" data-category="Jazz">Jazz</button>
+                    <button class="tab-btn" data-category="Hip-Hop">Hip-Hop</button>
+                    <button class="tab-btn" data-category="Latin">Latina</button>
+                    <button class="tab-btn" data-category="African">Africana</button>
+                </div>
+
+                <!-- Genre List -->
+                <div class="genre-list" id="genreList">
+                    <div class="loading">Cargando géneros...</div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Composer -->
+            <section class="panel right-panel">
+                <!-- Genre Info -->
+                <div class="genre-info" id="genreInfo">
+                    <div class="info-placeholder">
+                        <p>Selecciona un género para ver detalles</p>
+                    </div>
+                </div>
+
+                <!-- Composer Controls -->
+                <div class="composer-controls">
+                    <h2>Configuración</h2>
+                    
+                    <div class="control-group">
+                        <label for="barsInput">Compases:</label>
+                        <input type="number" id="barsInput" min="4" max="256" value="32" step="4">
+                        <span class="value-display" id="barsDisplay">32</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="seedInput">Seed (opcional):</label>
+                        <input type="number" id="seedInput" placeholder="Dejar vacío para aleatorio">
+                        <button id="randomSeedBtn" class="small-btn">🎲</button>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="tempoDisplay">Tempo:</label>
+                        <span class="value-display" id="tempoDisplay">-</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="timeSignatureDisplay">Compás:</label>
+                        <span class="value-display" id="timeSignatureDisplay">-</span>
+                    </div>
+
+                    <!-- Neural Network Options -->
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="useNeuralCheckbox">
+                            Usar Red Neuronal (si está disponible)
+                        </label>
+                    </div>
+
+                    <!-- Generate Button -->
+                    <button id="generateBtn" class="btn btn-primary">
+                        ▶ Generar MIDI
+                    </button>
+
+                    <!-- Progress -->
+                    <div id="progressContainer" class="progress-container" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p id="progressText">Generando...</p>
+                    </div>
+
+                    <!-- Download Link -->
+                    <div id="downloadContainer" style="display: none;">
+                        <a id="downloadLink" href="#" class="btn btn-success" download>
+                            ⬇ Descargar MIDI
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Neural Network Training Section -->
+                <div class="neural-section">
+                    <h2>🧠 Red Neuronal</h2>
+                    
+                    <div class="control-group">
+                        <label for="trainingDirInput">Directorio de MIDI para entrenar:</label>
+                        <input type="text" id="trainingDirInput" placeholder="training_data" value="training_data">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="epochsInput">Épocas de entrenamiento:</label>
+                        <input type="number" id="epochsInput" min="10" max="500" value="50" step="10">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="modelNameInput">Nombre del modelo:</label>
+                        <input type="text" id="modelNameInput" placeholder="composer_model" value="composer_model">
+                    </div>
+
+                    <button id="trainNeuralBtn" class="btn btn-secondary">
+                        🎓 Entrenar Red Neuronal
+                    </button>
+
+                    <!-- Training Progress -->
+                    <div id="trainingProgressContainer" class="progress-container" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p id="trainingProgressText">Entrenando...</p>
+                    </div>
+
+                    <!-- Model Status -->
+                    <div id="modelStatusContainer" style="display: none;">
+                        <p id="modelStatusText"></p>
+                    </div>
+                </div>
+
+                <!-- Info Panels -->
+                <div class="info-panels">
+                    <div class="info-panel">
+                        <h3>📊 Parámetros</h3>
+                        <div id="paramsInfo" class="params-grid">
+                            <p>Selecciona un género</p>
+                        </div>
+                    </div>
+
+                    <div class="info-panel">
+                        <h3>🎸 Instrumentos</h3>
+                        <div id="instrumentsInfo" class="instruments-list">
+                            <p>Selecciona un género</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Universal Genre MIDI Composer © 2025 | Compositor Neural Global</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

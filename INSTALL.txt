@@ -1,0 +1,122 @@
+================================================================================
+UNIVERSAL GENRE MIDI COMPOSER - INSTALLATION GUIDE
+================================================================================
+
+QUICK START (3 PASOS)
+================================================================================
+
+PASO 1: INSTALAR PYTHON
+-----------------------
+Windows:
+  1. Descarga Python desde https://www.python.org/downloads/
+  2. Ejecuta el instalador
+  3. IMPORTANTE: Marca "Add Python to PATH"
+  4. Haz click en "Install Now"
+
+macOS:
+  brew install python3
+
+Linux:
+  sudo apt-get install python3 python3-pip
+
+
+PASO 2: INSTALAR DEPENDENCIAS
+------------------------------
+Abre una terminal/cmd en la carpeta a_dawn_composer y ejecuta:
+
+  pip install midiutil numpy
+
+(Opcional para características avanzadas):
+  pip install tensorflow
+
+
+PASO 3: EJECUTAR LA PLATAFORMA
+------------------------------
+Windows:
+  - Doble click en "run.bat"
+  - O desde terminal: run.bat
+
+macOS/Linux:
+  - Abre terminal en la carpeta
+  - Ejecuta: chmod +x run.sh
+  - Luego: ./run.sh
+
+El navegador se abrirá automáticamente en http://localhost:8000
+
+
+ALTERNATIVA: LÍNEA DE COMANDOS
+================================================================================
+
+Generar MIDI sin interfaz web:
+
+  python generate_any_genre.py trap
+  python generate_any_genre.py jazz_fusion -b 64
+  python generate_any_genre.py salsa -o mi_salsa.mid
+  python generate_any_genre.py --list
+  python generate_any_genre.py --search metal
+
+
+SOLUCIÓN DE PROBLEMAS
+================================================================================
+
+"Python no se encuentra"
+  → Reinstala Python y marca "Add Python to PATH"
+  → Reinicia la terminal/cmd
+
+"midiutil no encontrado"
+  → Ejecuta: pip install midiutil numpy
+
+"El navegador no se abre"
+  → Abre manualmente: http://localhost:8000
+
+"Puerto 8000 ya está en uso"
+  → Edita web_server.py y cambia el puerto
+  → O ejecuta: python web_server.py 8001
+
+
+ARCHIVOS IMPORTANTES
+================================================================================
+
+run.bat              - Ejecutor para Windows
+run.sh               - Ejecutor para Linux/macOS
+index.html           - Interfaz web
+web_server.py        - Servidor
+generate_any_genre.py - Generador CLI
+QUICK_START.md       - Guía rápida
+README.md            - Documentación completa
+
+
+CARACTERÍSTICAS
+================================================================================
+
+✓ 200+ géneros musicales
+✓ Interfaz web moderna
+✓ 4 pistas MIDI (Melodía, Acordes, Bajo, Batería)
+✓ Parámetros específicos por género
+✓ Descarga directa de archivos
+✓ Compatible con cualquier DAW
+
+
+PRÓXIMOS PASOS
+================================================================================
+
+1. Ejecuta run.bat (Windows) o run.sh (macOS/Linux)
+2. Selecciona un género en la interfaz web
+3. Configura los parámetros
+4. Haz click en "Generar MIDI"
+5. Descarga el archivo
+6. Abre en tu DAW favorito (Ableton, FL Studio, Logic, etc.)
+
+
+SOPORTE
+================================================================================
+
+Si tienes problemas:
+1. Verifica que Python esté instalado: python --version
+2. Verifica que midiutil esté instalado: pip list
+3. Intenta ejecutar desde una terminal nueva
+4. Lee QUICK_START.md o README.md
+
+¡Diviértete creando música! 🎵
+
+================================================================================
